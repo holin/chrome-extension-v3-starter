@@ -52,6 +52,8 @@ function populateForm(formData) {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
+    sendResponse({farewell: "goodbye"});
+
     if (request.action === "new-post") {
       console.log('new-post with form data', request.formData)
       populateForm(request.formData)
@@ -60,7 +62,6 @@ chrome.runtime.onMessage.addListener(
       // save draft
       $('#save-post').click()
     }
-    sendResponse({farewell: "goodbye"});
   }
 )
 
